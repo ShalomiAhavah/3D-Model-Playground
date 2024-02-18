@@ -1,3 +1,65 @@
+:root {
+  --gray: rgb(85, 85, 85);
+}
+
+/* *Custom Reset */
+button {
+  border: none;
+  background-color: transparent;
+  color: black;
+}
+
+/* *Styling */
 body {
-  background-color: rgb(2, 2, 36);
+  background-color: rgb(2, 2, 20);
+  display: grid;
+  place-content: center;
+}
+
+.screen {
+  width: 90vw;
+  height: 95vh;
+  border: 5px solid var(--gray);
+  background-color: rgb(216, 216, 205);
+  border-radius: 30px;
+}
+
+.viewer {
+  width: 100%;
+  height: 85%;
+}
+
+.dock {
+  width: 100%;
+  height: 15vh;
+  background-color: var(--gray);
+  border-radius: 0 0 30px 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.color-changes {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.color {
+  width: 7vh;
+  aspect-ratio: 1;
+  border: 2px solid rgb(251, 243, 228);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#color1 {
+  background: red;
+}
+#color2 {
+  background: blue;
+}
+#color3 {
+  background-color: yellow;
 }
