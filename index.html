@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.138.0/build/three.module.js",
+                "OrbitControls": "https://unpkg.com/three@0.138.0/examples/jsm/controls/OrbitControls.js"
+            }
+        }
+    </script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -10,17 +20,39 @@
 </head>
 <body>
     <div class="screen">
-        <model-viewer color="#ffffff" class="viewer" src="/assets/PomegranateScan_GLTF/pomegranate.gltf" alt="Pomagranate" ar camera-controls auto-rotate></model-viewer>
+        <model-viewer 
+        id="model" 
+        color="#ffffff" 
+        class="viewer" 
+        src="/assets//Mushrooms.glb" 
+        alt="Mushroom" 
+        ar 
+        camera-controls 
+        auto-rotate>
+        </model-viewer>
         <div class="dock">
             <div class="color-changes">
-                <button class="color" id="color1" data-color="#000000"></button>
+                <button class="color" id="color1" data-color="rgb(211, 16, 16)"></button>
                 <button class="color" id="color2" data-color="#0000ff"></button>
                 <button class="color" id="color3" data-color="yellow"></button>
+            </div>
+            <div class="metallic">
+                <input type="range" name="Metallicness" id="metallic-value" min="0" max="1" step="0.01" value="0">
             </div>
         </div>
     </div>
 
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="script.js"></script>
+<script>
+const modelViewer = document.querySelector("model-viewer#model");
+document.querySelector(".color-changes").addEventListener("click", (event) => {
+  const colorString = event.target.dataset.color;
+  const [material] = modelViewer.model.materials;
+  material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+});
+
+document.querySelector(".metallic").addEventListener("input", (event) => {
+    const material = modelViewer.model.materials[0];
+    material.pbrMetallicRoughness.setMetallicFactor(event.target.value);
+})
+</script>
 </body>
