@@ -38,6 +38,7 @@
             </div>
             <div class="metallic">
                 <input type="range" name="Metallicness" id="metallic-value" min="0" max="1" step="0.01" value="0">
+                <input type="range" name="Roughness" id="roughness-value" min="0" max="1" step="0.01" value="1">
             </div>
         </div>
     </div>
@@ -50,9 +51,14 @@ document.querySelector(".color-changes").addEventListener("click", (event) => {
   material.pbrMetallicRoughness.setBaseColorFactor(colorString);
 });
 
-document.querySelector(".metallic").addEventListener("input", (event) => {
+document.querySelector("#metallic-value").addEventListener("input", (event) => {
     const material = modelViewer.model.materials[0];
     material.pbrMetallicRoughness.setMetallicFactor(event.target.value);
-})
+});
+
+document.querySelector("#roughness-value").addEventListener("input", (event)=> {
+    const material = modelViewer.model.materials[0];
+    material.pbrMetallicRoughness.setRoughnessFactor(event.target.value)
+});
 </script>
 </body>

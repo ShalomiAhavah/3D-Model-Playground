@@ -42,14 +42,14 @@ body {
 }
 
 .color-changes {
-  width: 30%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
 .color {
-  width: 7vh;
+  width: 7vw;
   aspect-ratio: 1;
   border: 2px solid rgb(251, 243, 228);
   border-radius: 50%;
